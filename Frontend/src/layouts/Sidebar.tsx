@@ -3,7 +3,6 @@ import { useState } from "react";
 import {
   LayoutDashboard,
 
-  Settings,
   User,
   Menu,
   X,
@@ -25,18 +24,11 @@ const Sidebar = () => {
       name: "My Board",
       path: "/dashboard",
       icon: <LayoutDashboard size={18} />,
-    },
-   
-    {
-      name: "Settings",
-      path: "/settings",
-      icon: <Settings size={18} />,
-    },
-  ];
+    }
+    ];
 
   return (
     <>
-      {/* Mobile Hamburger Toggle */}
       <button
         onClick={() => setOpen(!open)}
         className="fixed left-4 top-4 z-50 rounded-xl bg-[#111115] p-2.5 text-zinc-300 border border-zinc-800 shadow-lg lg:hidden"
@@ -44,7 +36,6 @@ const Sidebar = () => {
         {open ? <X size={20} /> : <Menu size={20} />}
       </button>
 
-      {/* Mobile Overlay */}
       {open && (
         <div
           onClick={() => setOpen(false)}
@@ -52,7 +43,6 @@ const Sidebar = () => {
         />
       )}
 
-      {/* Sidebar Navigation */}
       <aside
         className={`
           fixed top-0 left-0 z-40
@@ -66,9 +56,7 @@ const Sidebar = () => {
         `}
       >
         <div className="flex h-full flex-col justify-between px-5 py-6">
-          {/* Top Section */}
           <div>
-            {/* Brand Logo */}
             <div className="mb-8 px-2">
               <Link to="/" className="flex items-center gap-2.5">
                 <CheckCircle2 className="h-6 w-6 text-purple-400" />
@@ -76,12 +64,9 @@ const Sidebar = () => {
                   TaskFlow
                 </span>
               </Link>
-              <p className="mt-1 text-xs text-zinc-500 font-medium">
-                Productivity Suite
-              </p>
+             
             </div>
 
-            {/* Navigation Links */}
             <nav className="space-y-1.5">
               {links.map((item) => (
                 <NavLink
@@ -97,15 +82,14 @@ const Sidebar = () => {
             </nav>
           </div>
 
-          {/* Bottom Section */}
           <div className="border-t border-zinc-800/80 pt-4">
             <NavLink
-              to="/profile"
+              to="/"
               onClick={() => setOpen(false)}
               className={navLinkClass}
             >
               <User size={18} />
-              <span>Profile Settings</span>
+              <span>LogOut</span>
             </NavLink>
           </div>
         </div>
