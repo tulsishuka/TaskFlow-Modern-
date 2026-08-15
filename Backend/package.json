@@ -1,25 +1,24 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
+ "scripts": {
+  "dev": "nodemon --exec tsx server.ts",
+  "build": "tsc",
+  "start": "node server.js",
+  "seed": "tsx seed.ts"
+},
   "dependencies": {
-    "cors": "^2.8.6",
+    "cors": "^2.8.5",
     "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "mongoose": "^9.9.2"
+    "express": "^5.1.0",
+    "mongoose": "^8.18.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^26.2.0",
+    "nodemon": "^3.1.14",
     "tsx": "^4.23.12",
     "typescript": "^7.0.2"
   }

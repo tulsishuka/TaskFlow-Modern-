@@ -1,14 +1,10 @@
 import mongoose, { Document, Schema } from "mongoose";
 
-export type TaskPriority = "Low" | "Medium" | "High";
-
-export type TaskColumn = "To Do" | "In Progress" | "Done";
-
 export interface ITask extends Document {
   title: string;
-  description: string;
-  priority: TaskPriority;
-  column: TaskColumn;
+  description?: string;
+  priority: "Low" | "Medium" | "High";
+  columnId: mongoose.Types.ObjectId;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -17,15 +13,14 @@ const taskSchema = new Schema<ITask>(
   {
     title: {
       type: String,
-      required: [true, "Task title is required"],
+      required: true,
       trim: true,
-      minlength: [1, "Task title cannot be empty"],
     },
 
     description: {
       type: String,
-      default: "",
       trim: true,
+      default: "",
     },
 
     priority: {
@@ -34,10 +29,10 @@ const taskSchema = new Schema<ITask>(
       default: "Medium",
     },
 
-    column: {
-      type: String,
-      enum: ["To Do", "In Progress", "Done"],
-      default: "To Do",
+    columnId: {
+      type: Schema.Types.ObjectId,
+      ref: "Column",
+      required: true,
     },
   },
   {

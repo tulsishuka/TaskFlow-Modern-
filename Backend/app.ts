@@ -1,42 +1,29 @@
 import express from "express";
 import cors from "cors";
-import taskRoutes from "./src/routes/task.routes";
-import notFoundMiddleware from "./src/middleware/notFound.middleware";
-import errorMiddleware from "./src/middleware/error.middleware";
 
-
+import boardRoutes from "./routes/boardRoutes.js";
+import columnRoutes from "./routes/columnRoutes.js";
+import taskRoutes from "./routes/task.routes.js";
 
 const app = express();
 
-
-// Middleware
-app.use(
-  cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
-  })
-);
-
+app.use(cors());
 app.use(express.json());
 
-
-// Health check
-app.get("/api/health", (_req, res) => {
-  res.status(200).json({
-    success: true,
+app.get("/", (_req, res) => {
+  res.json({
     message: "TaskFlow API is running",
   });
 });
 
-
-// Routes
 app.use("/api/tasks", taskRoutes);
+app.use("/api/boards", boardRoutes);
+app.use("/api/columns", columnRoutes);
 
-
-// 404
-app.use(notFoundMiddleware);
-
-
-// Error handler
-app.use(errorMiddleware);
+app.use((_req, res) => {
+  res.status(404).json({
+    message: "Route not found",
+  });
+});
 
 export default app;
