@@ -46,8 +46,7 @@ const MyBoard = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-const BOARD_ID = "6a808dba06dd2dfb1495ca8e";
-
+const BOARD_ID = "6a817d6b8920cff90ba7e506";
 
   const fetchColumns = async () => {
     try {
