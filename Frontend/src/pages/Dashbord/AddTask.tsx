@@ -54,7 +54,8 @@ const AddTask = ({
       setLoading(true);
 
       const response = await fetch(
-        "http://localhost:3000/api/tasks",
+        // "http://localhost:3000/api/tasks",
+          "https://taskflow-modern.onrender.com/api/tasks",
         {
           method: "POST",
           headers: {
