@@ -12,7 +12,7 @@ import {
 
 import AddTask from "./AddTask";
 
-const API_URL = "http://localhost:3000/api";
+const API_URL = "https://taskflow-modern.onrender.com/api";
 
 interface Task {
   _id: string;
